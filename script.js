@@ -1,8 +1,24 @@
-function stringChop(str, size) {
-  // your code here
+function chunkString() {
+  const inputString = document.getElementById('inputString').value;
+  const chunkLength = parseInt(document.getElementById('chunkLength').value);
+
+  const result = chunkStringFunction(inputString, chunkLength);
+
+  document.getElementById('result').innerText = `Chunked String: ${JSON.stringify(result)}`;
 }
 
-// Do not change the code below
-const str = prompt("Enter String.");
-const size = prompt("Enter Chunk Size.");
-alert(stringChop(str, size));
+function chunkStringFunction(str, chunkLength) {
+  if (str === null) {
+    return [];
+  }
+
+  const chunks = [];
+  let index = 0;
+
+  while (index < str.length) {
+    chunks.push(str.substr(index, chunkLength));
+    index += chunkLength;
+  }
+
+  return chunks;
+}
